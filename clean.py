@@ -6,6 +6,7 @@ from collections import defaultdict
 import os
 import clean
 import pandas as pd
+import ollama
 
 # Function to clean dataset
 def cleanData(inFile, outFile):
@@ -67,7 +68,7 @@ def cleanData(inFile, outFile):
 
 # Function to clean all datasets in a directory
 def cleanAllData():
-    inputDataPath = '../Abbas'
+    inputDataPath = '../IDS-PROJECT'
     
 
     files = os.listdir(inputDataPath)
@@ -83,7 +84,7 @@ def cleanAllData():
 
         
         inputFile = os.path.join(inputDataPath, file)
-        outputDataPath = '../Abbas/' + os.path.splitext(file)[0]
+        outputDataPath = '../IDS-PROJECT/' + os.path.splitext(file)[0]
         outFile = os.path.join(outputDataPath, file)
         print("Folder " + outputDataPath + " Has been created successfully") 
 
@@ -93,12 +94,15 @@ def cleanAllData():
 
 # Function to generate chatbot responses
 def ask_chatbot(question, context=""):
-    """
-    Sends a question to the Ollama DeepSeek model with additional context.
-    """
     prompt = f"{context}\n\nUser: {question}"
-    response = clean.generate(model='deepseek-coder:6.7b', prompt=prompt)
-    return response['response']
+    try:
+        response = ollama.generate(
+            model='deepseek-r1:7b',
+            prompt=prompt
+        )
+        return response['response']
+    except Exception as e:
+        return f"Chatbot error: {str(e)}"
 
 # Function to describe the cleaning process
 def clean_and_process_dataset():
@@ -110,17 +114,21 @@ def clean_and_process_dataset():
     3. The data was grouped by the last column (key) and saved into separate files.
     4. A binary-class version of the dataset was created by mapping labels to 0 (Benign) or 1 (Attack).
     """
+def start_chatbot():
+    """Handles chatbot interaction after cleaning."""
+    cleaning_summary = clean_and_process_dataset()
+    print("\nWhat would you like to know about the cleaning process?")
+    print("Type 'exit' to quit.")
+    return cleaning_summary  # Return the summary so it can be used later
 
 # Main function to execute data cleaning and chatbot
 def main():
     if len(sys.argv) < 2:
         print('Usage: python data_cleanup.py inputFile.csv outputFile')
-        return
     elif sys.argv[1] == 'all':
         cleanAllData()
     else:
         cleanData(sys.argv[1], sys.argv[2])
-
     # After cleaning, allow user interaction with the chatbot
     cleaning_summary = clean_and_process_dataset()
 
@@ -131,15 +139,25 @@ def main():
     print("- What transformations were applied to the data?")
     print("Type 'exit' to quit.")
 
-    while True:
-        user_input = input("\nYour question: ").strip()
-        if user_input.lower() == 'exit':
-            print("Exiting chatbot. Goodbye!")
-            break
+    start_chatbot()
 
-        # Get chatbot response
-        response = ask_chatbot(user_input, cleaning_summary)
-        print(f"\nChatbot: {response}")
+    while True:
+        try:
+            user_input = input("\nYour question: ").strip()
+            if user_input.lower() == 'exit':
+                print("Exiting chatbot. Goodbye!")
+                break
+            if not user_input:  # Handle empty input
+                continue
+                
+            response = ask_chatbot(user_input, cleaning_summary)
+            print(f"\nChatbot: {response}")
+            
+        except KeyboardInterrupt:
+            print("\nGoodbye!")
+            break
+        except Exception as e:
+            print(f"Error: {str(e)}")
 
 if __name__ == "__main__":
     main()
