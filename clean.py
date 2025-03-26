@@ -15,6 +15,8 @@ def cleanData(inFile, outFile):
     stats = {}
     dropStats = defaultdict(int)
     print('Cleaning {}'.format(inFile))
+     # Strip .csv if it exists to prevent double extension
+    outFile = outFile.rstrip('.csv')  # Removes trailing .csv if present
 
     with open(inFile, 'r') as csvfile:
         data = csvfile.readlines()
