@@ -1,0 +1,5 @@
+Total Clean Rows = 1040549; Dropped Rows = 8027
+Benign = 988050
+DoS attacks-GoldenEye = 41508
+DoS attacks-Slowloris = 10990
+Dropped Benign = 8027

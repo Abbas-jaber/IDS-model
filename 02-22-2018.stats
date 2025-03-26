@@ -1,0 +1,6 @@
+Total Clean Rows = 1042966; Dropped Rows = 5610
+Benign = 1042603
+Brute Force -Web = 249
+Brute Force -XSS = 79
+SQL Injection = 34
+Dropped Benign = 5610

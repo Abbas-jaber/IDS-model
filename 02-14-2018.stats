@@ -1,0 +1,6 @@
+Total Clean Rows = 1044752; Dropped Rows = 3824
+Benign = 663808
+FTP-BruteForce = 193354
+SSH-Bruteforce = 187589
+Dropped FTP-BruteForce = 6
+Dropped Benign = 3818

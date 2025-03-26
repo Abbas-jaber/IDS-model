@@ -1,0 +1,5 @@
+Total Clean Rows = 1048575; Dropped Rows = 1
+Benign = 446772
+DoS attacks-SlowHTTPTest = 139890
+DoS attacks-Hulk = 461912
+Dropped Label = 1
