@@ -29,15 +29,15 @@ To download this dataset:
 
 ### Cleanup Process:
 1. **Initial Cleanup:**  
-   - Each dataset undergoes an initial cleanup using its respective `datacleanup.py` script.
+   - Each dataset undergoes an initial cleanup using its respective `clean.py` script.
    
 2. **Combining Datasets:**  
    - After the initial cleanup, datasets are combined using `combine.py`.  
 
 3. **Final Cleanup:**  
-   - Once combined, `datacleanup2.py` is applied to the **binary** and **multiclass** CSV files.
+   - Once combined, `clean2.py` is applied to the **binary** and **multiclass** CSV files.
 
-See the corresponding scripts (`datacleanup.py`, `combine.py`, and `datacleanup2.py`) for details on each phase.
+See the corresponding scripts (`clean.py`, `combine.py`, and `clean2.py`) for details on each phase.
 
 ## Dataset Summary Table
 
