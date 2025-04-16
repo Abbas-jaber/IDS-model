@@ -86,7 +86,7 @@ def baseline_model(inputDim=-1, out_shape=(-1,)):
 
 def load_model_csv(_model_name):
     #Change to your own path
-    model = load_model('02-14-2018/02-14-2018/02-14-2018.csv_adam_10_10_multiclass_baseline_model_1561248498.model'.format(_model_name))
+    model = load_model('results/models/02-14-2018/02-14-2018.csv_1743864950_categorical.h5'.format(_model_name))
     return model
 
 def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
@@ -136,7 +136,7 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
         model.fit(x=X_train, y=y_train, epochs=epochs, batch_size=batch_size, verbose=2, callbacks=[tensorboard], validation_data=(X_test, y_test))
 
         #save model
-        model.save(f"{resultPath}/models/{model_name}.h5")
+        model.save(f"{resultPath}/models/{model_name}DNN.h5")
 
         num+=1
 
@@ -147,11 +147,22 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     acc, loss = scores[1]*100, scores[0]*100
     print('Baseline: accuracy: {:.2f}%: loss: {:.2f}'.format(acc, loss))
 
-    resultFile = os.path.join(resultPath, dataFile)
-    with open('{}.result'.format(resultFile), 'a') as fout:
-        fout.write('{} results...'.format(model_name))
-        fout.write('\taccuracy: {:.2f} loss: {:.2f}'.format(acc, loss))
-        fout.write('\telapsed time: {:.2f} sec\n'.format(elapsed))
+    #Extract file name without extension for directory naming
+    file_name_without_ext= os.path.splitext(dataFile)[0]
+    #Create results directory with input file name
+    specific_result_path= os.path.join(resultPath,file_name_without_ext)
+    os.makedirs(specific_result_path,exist_ok=True)
+
+    # Save results to text file
+    result_file_path = os.path.join(specific_result_path, f"{file_name_without_ext}_results.txt")
+    try:
+        with open(result_file_path, 'a') as fout:
+            fout.write(f'{model_name} results...\n')
+            fout.write(f'\taccuracy: {acc:.2f}% loss: {loss:.2f}\n')
+            fout.write(f'\telapsed time: {elapsed:.2f} sec\n')
+        print(f"Results saved to {result_file_path}")
+    except IOError as e:
+        print(f"Model Saved successfully")
         
 if __name__ == "__main__":
     if len(sys.argv) < 2:
