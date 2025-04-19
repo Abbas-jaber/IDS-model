@@ -1,0 +1,36 @@
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-04-19 11:41:49.478383: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-19 11:41:50.013373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 3943 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:01:00.0, compute capability: 7.5
+out_shape[1]:2
+Binary Cross-Entropy Loss Function
+Training 03-01-2018/03-01-2018.csv on split 0
+Epoch 1/10
+26255/26255 - 110s - loss: 0.5909 - accuracy: 0.7184 - val_loss: 0.5908 - val_accuracy: 0.7184 - 110s/epoch - 4ms/step
+Epoch 2/10
+26255/26255 - 107s - loss: 0.5900 - accuracy: 0.7184 - val_loss: 0.5904 - val_accuracy: 0.7184 - 107s/epoch - 4ms/step
+Epoch 3/10
+26255/26255 - 108s - loss: 0.5897 - accuracy: 0.7184 - val_loss: 0.5896 - val_accuracy: 0.7184 - 108s/epoch - 4ms/step
+Epoch 4/10
+26255/26255 - 107s - loss: 0.5886 - accuracy: 0.7188 - val_loss: 0.5881 - val_accuracy: 0.7205 - 107s/epoch - 4ms/step
+Epoch 5/10
+26255/26255 - 108s - loss: 0.5872 - accuracy: 0.7210 - val_loss: 0.5879 - val_accuracy: 0.7206 - 108s/epoch - 4ms/step
+Epoch 6/10
+26255/26255 - 108s - loss: 0.5869 - accuracy: 0.7211 - val_loss: 0.5867 - val_accuracy: 0.7211 - 108s/epoch - 4ms/step
+Epoch 7/10
+26255/26255 - 108s - loss: 0.5860 - accuracy: 0.7217 - val_loss: 0.5864 - val_accuracy: 0.7216 - 108s/epoch - 4ms/step
+Epoch 8/10
+26255/26255 - 107s - loss: 0.5853 - accuracy: 0.7219 - val_loss: 0.5869 - val_accuracy: 0.7214 - 107s/epoch - 4ms/step
+Epoch 9/10
+26255/26255 - 842s - loss: 0.5847 - accuracy: 0.7219 - val_loss: 0.5852 - val_accuracy: 0.7216 - 842s/epoch - 32ms/step
+Epoch 10/10
+26255/26255 - 111s - loss: 0.5839 - accuracy: 0.7220 - val_loss: 0.5864 - val_accuracy: 0.7215 - 111s/epoch - 4ms/step
+2052/2052 [==============================] - 6s 3ms/step - loss: 0.5864 - accuracy: 0.7215
+['loss', 'accuracy']
+Baseline: accuracy: 72.15%: loss: 58.64
+2052/2052 [==============================] - 3s 2ms/step
+Precision: 74.91%
+Recall: 72.15%
+F1-score: 60.95%
+Model Saved successfully
