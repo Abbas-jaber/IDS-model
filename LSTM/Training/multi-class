@@ -1,0 +1,43 @@
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-04-21 19:39:30.792594: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-21 19:39:31.921366: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 3943 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:01:00.0, compute capability: 7.5
+Categorical Cross-Entropy Loss Function
+Training multi-class\clean-IDS-2018-multiclass.csv on split 0
+2025-04-21 19:39:34.263558: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1666557772 exceeds 10% of free system memory.
+2025-04-21 19:39:35.914075: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 253148016 exceeds 10% of free system memory.
+Epoch 1/10
+2025-04-21 19:39:39.990039: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8100
+2025-04-21 19:48:53.337254: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+164810/164810 - 646s - loss: 0.6256 - accuracy: 0.8103 - val_loss: 0.5403 - val_accuracy: 0.8141 - 646s/epoch - 4ms/step
+Epoch 2/10
+164810/164810 - 638s - loss: 0.4853 - accuracy: 0.8230 - val_loss: 0.4708 - val_accuracy: 0.8154 - 638s/epoch - 4ms/step
+Epoch 3/10
+164810/164810 - 633s - loss: 0.4390 - accuracy: 0.8354 - val_loss: 0.4163 - val_accuracy: 0.8521 - 633s/epoch - 4ms/step
+Epoch 4/10
+164810/164810 - 638s - loss: 0.4088 - accuracy: 0.8479 - val_loss: 0.3902 - val_accuracy: 0.8720 - 638s/epoch - 4ms/step
+Epoch 5/10
+164810/164810 - 636s - loss: 0.3863 - accuracy: 0.8557 - val_loss: 0.3587 - val_accuracy: 0.8784 - 636s/epoch - 4ms/step
+Epoch 6/10
+164810/164810 - 638s - loss: 0.3684 - accuracy: 0.8621 - val_loss: 0.3659 - val_accuracy: 0.8660 - 638s/epoch - 4ms/step
+Epoch 7/10
+164810/164810 - 637s - loss: 0.3529 - accuracy: 0.8688 - val_loss: 0.3356 - val_accuracy: 0.8950 - 637s/epoch - 4ms/step
+Epoch 8/10
+164810/164810 - 638s - loss: 0.3393 - accuracy: 0.8749 - val_loss: 0.3488 - val_accuracy: 0.8489 - 638s/epoch - 4ms/step
+Epoch 9/10
+164810/164810 - 638s - loss: 0.3275 - accuracy: 0.8810 - val_loss: 0.3414 - val_accuracy: 0.8322 - 638s/epoch - 4ms/step
+Epoch 10/10
+164810/164810 - 710s - loss: 0.3171 - accuracy: 0.8867 - val_loss: 0.3196 - val_accuracy: 0.8873 - 710s/epoch - 4ms/step
+2025-04-21 21:27:07.078524: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+41203/41203 [==============================] - 108s 3ms/step - loss: 0.3196 - accuracy: 0.8873
+['loss', 'accuracy']
+Baseline: accuracy: 88.73%: loss: 31.96
+2025-04-21 21:28:55.747637: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+41203/41203 [==============================] - 75s 2ms/step
+C:\Users\Abbas\miniconda3\envs\tf\lib\site-packages\sklearn\metrics\_classification.py:1471: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Precision: 84.48%
+Recall: 88.73%
+F1-Score: 85.91%
+Model Saved successfully
