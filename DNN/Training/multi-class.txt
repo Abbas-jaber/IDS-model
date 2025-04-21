@@ -1,0 +1,41 @@
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-04-21 10:43:35.686478: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-21 10:43:36.804689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 3943 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2060, pci bus id: 0000:01:00.0, compute capability: 7.5
+out_shape[1]:12
+Categorical Cross-Entropy Loss Function
+Training multi-class\clean-IDS-2018-multiclass.csv on split 0
+2025-04-21 10:43:46.594942: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1666557772 exceeds 10% of free system memory.
+2025-04-21 10:43:47.423533: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 253148016 exceeds 10% of free system memory.
+Epoch 1/10
+2025-04-21 11:02:52.135360: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+527392/527392 - 1342s - loss: 0.4686 - accuracy: 0.8344 - val_loss: 0.3358 - val_accuracy: 0.8500 - 1342s/epoch - 3ms/step
+Epoch 2/10
+527392/527392 - 1361s - loss: 0.3362 - accuracy: 0.8629 - val_loss: 0.3040 - val_accuracy: 0.8673 - 1361s/epoch - 3ms/step
+Epoch 3/10
+527392/527392 - 1350s - loss: 0.2803 - accuracy: 0.8909 - val_loss: 0.2334 - val_accuracy: 0.9086 - 1350s/epoch - 3ms/step
+Epoch 4/10
+527392/527392 - 1332s - loss: 0.2431 - accuracy: 0.9110 - val_loss: 0.2402 - val_accuracy: 0.8804 - 1332s/epoch - 3ms/step
+Epoch 5/10
+527392/527392 - 1356s - loss: 0.2183 - accuracy: 0.9243 - val_loss: 0.2012 - val_accuracy: 0.9096 - 1356s/epoch - 3ms/step
+Epoch 6/10
+527392/527392 - 1347s - loss: 0.2047 - accuracy: 0.9309 - val_loss: 0.1717 - val_accuracy: 0.9503 - 1347s/epoch - 3ms/step
+Epoch 7/10
+527392/527392 - 1334s - loss: 0.1980 - accuracy: 0.9342 - val_loss: 0.1621 - val_accuracy: 0.9511 - 1334s/epoch - 3ms/step
+Epoch 8/10
+527392/527392 - 1333s - loss: 0.1921 - accuracy: 0.9366 - val_loss: 0.1719 - val_accuracy: 0.9453 - 1333s/epoch - 3ms/step
+Epoch 9/10
+527392/527392 - 1334s - loss: 0.1887 - accuracy: 0.9385 - val_loss: 0.1758 - val_accuracy: 0.9455 - 1334s/epoch - 3ms/step
+Epoch 10/10
+527392/527392 - 1396s - loss: 0.1890 - accuracy: 0.9396 - val_loss: 0.1972 - val_accuracy: 0.9245 - 1396s/epoch - 3ms/step
+2025-04-21 14:28:34.736911: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+41203/41203 [==============================] - 108s 3ms/step - loss: 0.1972 - accuracy: 0.9245
+['loss', 'accuracy']
+Baseline: accuracy: 92.45%: loss: 19.72
+2025-04-21 14:30:23.569269: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
+41203/41203 [==============================] - 64s 2ms/step
+Precision: 91.83%
+Recall: 92.45%
+F1-score: 91.17%
+Model Saved successfully
