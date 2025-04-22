@@ -26,11 +26,9 @@ Epoch 9/10
 164810/164810 - 638s - loss: 0.3275 - accuracy: 0.8810 - val_loss: 0.3414 - val_accuracy: 0.8322 - 638s/epoch - 4ms/step
 Epoch 10/10
 164810/164810 - 710s - loss: 0.3171 - accuracy: 0.8867 - val_loss: 0.3196 - val_accuracy: 0.8873 - 710s/epoch - 4ms/step
-2025-04-21 21:27:07.078524: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
 41203/41203 [==============================] - 108s 3ms/step - loss: 0.3196 - accuracy: 0.8873
 ['loss', 'accuracy']
 Baseline: accuracy: 88.73%: loss: 31.96
-2025-04-21 21:28:55.747637: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 416639680 exceeds 10% of free system memory.
 41203/41203 [==============================] - 75s 2ms/step
 Precision: 84.48%
 Recall: 88.73%
