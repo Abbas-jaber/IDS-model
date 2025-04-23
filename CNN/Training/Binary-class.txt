@@ -7,10 +7,8 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 out_shape[1]: 2
 Binary Cross-Entropy Loss Function
 Training binary-class\clean-IDS-2018-binaryclass.csv on split 0
-2025-04-22 21:10:22.477766: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 1708749108 exceeds 10% of free system memory.
 Epoch 1/10
 2025-04-22 21:10:26.916747: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8100
-2025-04-22 21:51:03.818703: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 427187520 exceeds 10% of free system memory.
 527392/527392 - 2723s - loss: 0.3468 - accuracy: 0.8314 - val_loss: 0.5286 - val_accuracy: 0.7865 - 2723s/epoch - 5ms/step
 Epoch 2/10
 527392/527392 - 2733s - loss: 0.3140 - accuracy: 0.8482 - val_loss: 2.5048 - val_accuracy: 0.7883 - 2733s/epoch - 5ms/step
@@ -30,11 +28,9 @@ Epoch 9/10
 527392/527392 - 2815s - loss: 0.2716 - accuracy: 0.8689 - val_loss: 0.2990 - val_accuracy: 0.8723 - 2815s/epoch - 5ms/step
 Epoch 10/10
 527392/527392 - 2833s - loss: 0.2691 - accuracy: 0.8716 - val_loss: 0.2884 - val_accuracy: 0.8586 - 2833s/epoch - 5ms/step
-2025-04-23 04:51:12.968097: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 427187520 exceeds 10% of free system memory.
 41203/41203 [==============================] - 144s 3ms/step - loss: 0.2884 - accuracy: 0.8586
 ['loss', 'accuracy']
 Baseline: accuracy: 85.86%: loss: 28.84
-2025-04-23 04:53:37.440400: W tensorflow/core/framework/cpu_allocator_impl.cc:82] Allocation of 427187520 exceeds 10% of free system memory.
 41203/41203 [==============================] - 94s 2ms/step
 Precision: 89.59%
 Recall: 85.86%
