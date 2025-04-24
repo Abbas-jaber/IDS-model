@@ -94,10 +94,6 @@ For details on how to train each model, you can navigate to the corresponding di
 
 The models are built and tested using the latest TensorFlow/Keras framework, ensuring compatibility with current tools and libraries.
 
-# Model Training
-
-This section describes the training process for multiple deep learning architectures across each dataset. Four distinct neural network architectures were implemented and evaluated: ANN, CNN, DNN, and LSTM. The training process was carried out on both binary and multiclass datasets to assess each model’s performance.
-
 ## Directory Structure
 
 ```text
