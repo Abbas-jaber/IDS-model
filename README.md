@@ -94,5 +94,40 @@ For details on how to train each model, you can navigate to the corresponding di
 
 The models are built and tested using the latest TensorFlow/Keras framework, ensuring compatibility with current tools and libraries.
 
+# Model Training
 
+This section describes the training process for multiple deep learning architectures across each dataset. Four distinct neural network architectures were implemented and evaluated: ANN, CNN, DNN, and LSTM. The training process was carried out on both binary and multiclass datasets to assess each model’s performance.
+
+## Directory Structure
+
+```text
+.
+├── ANN
+│   ├── train_binary.py
+│   ├── train_multiclass.py
+│   ├── training/           # training logs & metrics output
+│   └── models/             # saved model files
+│       ├── ANN_binary.h5
+│       └── ANN_multiclass.h5
+├── CNN
+│   ├── train_binary.py
+│   ├── train_multiclass.py
+│   ├── training/
+│   └── models/
+│       ├── CNN_binary.h5
+│       └── CNN_multiclass.h5
+├── DNN
+│   ├── train_binary.py
+│   ├── train_multiclass.py
+│   ├── training/
+│   └── models/
+│       ├── DNN_binary.h5
+│       └── DNN_multiclass.h5
+└── LSTM
+    ├── train_binary.py
+    ├── train_multiclass.py
+    ├── training/
+    └── models/
+        ├── LSTM_binary.h5
+        └── LSTM_multiclass.h5
 
