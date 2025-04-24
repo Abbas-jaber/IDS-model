@@ -127,3 +127,10 @@ The models are built and tested using the latest TensorFlow/Keras framework, ens
         ├── LSTM_binary.h5
         └── LSTM_multiclass.h5
 
+### Usage
+
+To train an ANN model on the binary-class dataset:
+
+```bash
+python Model_training_ANN.py binary-class/clean-IDS-2018-binaryclass.csv
+
