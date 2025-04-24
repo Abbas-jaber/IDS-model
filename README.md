@@ -72,4 +72,27 @@ See the corresponding scripts (`clean.py`, `combine.py`, and `clean2.py`) for de
 |            | Bot                            | 286,191     | 0          |
 | **Total**   |                                | **1,044,526** | **4,050**  |
 
+# Model Training
+
+This section describes the training process for multiple deep learning architectures across each dataset. Four distinct neural network architectures were implemented and evaluated: ANN, CNN, DNN, and LSTM. The training process was carried out for each of these models to assess their performance in detecting and classifying network intrusion traffic.
+
+In this repository, I have organized the scripts into separate directories for each model architecture:
+
+- **ANN**: Artificial Neural Network models for network intrusion detection.
+- **CNN**: Convolutional Neural Network models for detecting patterns in network traffic.
+- **DNN**: Deep Neural Network models designed for complex feature extraction and classification.
+- **LSTM**: Long Short-Term Memory models for sequential data and temporal pattern recognition in network traffic.
+
+Each directory contains scripts that train the respective models on the datasets cleaned and preprocessed in the previous sections. The models are trained using the combined datasets, with both binary and multiclass classifications. The training process includes the following steps:
+
+1. **Data Loading**: Each model loads the respective dataset (binary or multiclass).
+2. **Model Building**: Neural network architectures are defined and compiled according to the chosen model type.
+3. **Model Training**: The model is trained on the dataset with defined hyperparameters, and training progress is logged.
+4. **Evaluation**: Once training is complete, each model is evaluated on the test data, and performance metrics such as accuracy, precision, recall, and F1-score are calculated.
+
+For details on how to train each model, you can navigate to the corresponding directories and refer to the individual training scripts.
+
+The models are built and tested using the latest TensorFlow/Keras framework, ensuring compatibility with current tools and libraries.
+
+
 
