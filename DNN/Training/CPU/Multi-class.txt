@@ -1,0 +1,38 @@
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-04-25 07:20:09.579052: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2025-04-25 07:20:09.581370: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2025-04-25 07:20:09.598601: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+out_shape[1]:12
+Categorical Cross-Entropy Loss Function
+Training .\multi-class\clean-IDS-2018-multiclass.csv on split 0
+Epoch 1/10
+527392/527392 - 741s - loss: 0.4734 - accuracy: 0.8335 - val_loss: 0.3782 - val_accuracy: 0.8380 - 741s/epoch - 1ms/step
+Epoch 2/10
+527392/527392 - 1303s - loss: 0.3379 - accuracy: 0.8618 - val_loss: 0.3710 - val_accuracy: 0.8167 - 1303s/epoch - 2ms/step
+Epoch 3/10
+527392/527392 - 826s - loss: 0.2915 - accuracy: 0.8853 - val_loss: 0.5244 - val_accuracy: 0.7941 - 826s/epoch - 2ms/step
+Epoch 4/10
+527392/527392 - 842s - loss: 0.2510 - accuracy: 0.9073 - val_loss: 0.2651 - val_accuracy: 0.8975 - 842s/epoch - 2ms/step
+Epoch 5/10
+527392/527392 - 766s - loss: 0.2233 - accuracy: 0.9219 - val_loss: 0.1950 - val_accuracy: 0.9356 - 766s/epoch - 1ms/step
+Epoch 6/10
+527392/527392 - 596s - loss: 0.2063 - accuracy: 0.9299 - val_loss: 0.1597 - val_accuracy: 0.9532 - 596s/epoch - 1ms/step
+Epoch 7/10
+527392/527392 - 597s - loss: 0.1951 - accuracy: 0.9348 - val_loss: 0.2047 - val_accuracy: 0.9330 - 597s/epoch - 1ms/step
+Epoch 8/10
+527392/527392 - 603s - loss: 0.1861 - accuracy: 0.9382 - val_loss: 0.1522 - val_accuracy: 0.9532 - 603s/epoch - 1ms/step
+Epoch 9/10
+527392/527392 - 595s - loss: 0.1813 - accuracy: 0.9406 - val_loss: 0.1514 - val_accuracy: 0.9547 - 595s/epoch - 1ms/step
+Epoch 10/10
+527392/527392 - 594s - loss: 0.1773 - accuracy: 0.9423 - val_loss: 0.1585 - val_accuracy: 0.9515 - 594s/epoch - 1ms/step
+41203/41203 [==============================] - 44s 1ms/step - loss: 0.1585 - accuracy: 0.9515
+['loss', 'accuracy']
+Baseline: accuracy: 95.15%: loss: 15.85
+41203/41203 [==============================] - 38s 920us/step
+Precision: 93.81%
+Recall: 95.15%
+F1-score: 94.35%
+Model Saved successfully
