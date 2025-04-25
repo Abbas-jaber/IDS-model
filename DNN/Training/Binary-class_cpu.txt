@@ -1,0 +1,35 @@
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-04-24 21:21:40.231965: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+out_shape[1]:2
+Binary Cross-Entropy Loss Function
+Training .\binary-class\clean-IDS-2018-binaryclass.csv on split 0
+Epoch 1/10
+527392/527392 - 540s - loss: 0.3020 - accuracy: 0.8551 - val_loss: 0.2505 - val_accuracy: 0.8691 - 540s/epoch - 1ms/step
+Epoch 2/10
+527392/527392 - 532s - loss: 0.2481 - accuracy: 0.8803 - val_loss: 0.2304 - val_accuracy: 0.8831 - 532s/epoch - 1ms/step
+Epoch 3/10
+527392/527392 - 543s - loss: 0.2379 - accuracy: 0.8884 - val_loss: 0.2817 - val_accuracy: 0.8471 - 543s/epoch - 1ms/step
+Epoch 4/10
+527392/527392 - 539s - loss: 0.2510 - accuracy: 0.8802 - val_loss: 0.2157 - val_accuracy: 0.9041 - 539s/epoch - 1ms/step
+Epoch 5/10
+527392/527392 - 503s - loss: 0.2194 - accuracy: 0.9022 - val_loss: 0.1956 - val_accuracy: 0.9283 - 503s/epoch - 954us/step
+Epoch 6/10
+527392/527392 - 535s - loss: 0.1981 - accuracy: 0.9165 - val_loss: 0.1876 - val_accuracy: 0.9222 - 535s/epoch - 1ms/step
+Epoch 7/10
+527392/527392 - 536s - loss: 0.1838 - accuracy: 0.9275 - val_loss: 0.1587 - val_accuracy: 0.9555 - 536s/epoch - 1ms/step
+Epoch 8/10
+527392/527392 - 532s - loss: 0.1795 - accuracy: 0.9319 - val_loss: 0.2063 - val_accuracy: 0.9139 - 532s/epoch - 1ms/step
+Epoch 9/10
+527392/527392 - 541s - loss: 0.1696 - accuracy: 0.9386 - val_loss: 0.1510 - val_accuracy: 0.9606 - 541s/epoch - 1ms/step
+Epoch 10/10
+527392/527392 - 519s - loss: 0.1594 - accuracy: 0.9443 - val_loss: 0.1393 - val_accuracy: 0.9624 - 519s/epoch - 984us/step
+41203/41203 [==============================] - 46s 1ms/step - loss: 0.1393 - accuracy: 0.9624
+['loss', 'accuracy']
+Baseline: accuracy: 96.24%: loss: 13.93
+41203/41203 [==============================] - 34s 813us/step
+Precision: 96.20%
+Recall: 96.24%
+F1-score: 96.19%
+Model Saved successfully
