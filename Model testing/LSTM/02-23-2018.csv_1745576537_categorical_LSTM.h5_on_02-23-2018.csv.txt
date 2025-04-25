@@ -1,0 +1,22 @@
+Model Evaluation Results
+==============================
+Model: 02-23-2018.csv_1745576537_categorical_LSTM.h5
+Test Dataset: 02-23-2018.csv
+
+Accuracy: 0.9995
+Loss: 0.0039
+Precision: 0.9989
+Recall: 0.9995
+F1-Score: 0.9992
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00   1042301
+           1       0.00      0.00      0.00       362
+           2       0.00      0.00      0.00       151
+           3       0.00      0.00      0.00        53
+
+    accuracy                           1.00   1042867
+   macro avg       0.25      0.25      0.25   1042867
+weighted avg       1.00      1.00      1.00   1042867
