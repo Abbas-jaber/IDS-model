@@ -1,28 +1,30 @@
-M.h5 .\binary-class\clean-IDS-2018-binaryclass.csv
-2025-04-25 09:42:15.298253: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
-2025-04-25 09:42:15.298882: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
-2025-04-25 09:42:15.299809: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-WARNING:tensorflow:Mixed precision compatibility check (mixed_float16): WARNING
-The dtype policy mixed_float16 may run slowly because this machine does not have a GPU. Only Nvidia GPUs with compute capability of at least 7.0 run quickly with mixed_float16.
-If you will use compatible GPU(s) not attached to this host, e.g. by running a multi-worker model, you can ignore this warning. This message will only be logged once
+Model Evaluation Results
+==============================
+Model: clean-IDS-2018-multiclass.csv_1745253460_categorical_LSTM.h5
+Test Dataset: clean-IDS-2018-multiclass.csv
 
-Evaluation Results:
-Accuracy: 0.8971
-Loss: 0.2843
-Precision: 0.8964
-Recall: 0.8971
-F1-Score: 0.8891
+Accuracy: 0.8871
+Loss: 0.3195
+Precision: 0.8444
+Recall: 0.8871
+F1-Score: 0.8589
 
 Classification Report:
               precision    recall  f1-score   support
 
-           0       0.90      0.98      0.94   5177632
-           1       0.89      0.59      0.71   1414765
+           0       0.90      0.99      0.94   5177632
+           1       0.03      0.00      0.00    286191
+           2       0.00      0.00      0.00       611
+           3       0.44      0.47      0.46       230
+           4       0.83      0.55      0.66     41508
+           5       0.91      0.64      0.75    461912
+           6       0.63      0.55      0.59    139890
+           7       0.95      0.73      0.82     10990
+           8       0.63      0.78      0.70    193354
+           9       0.41      0.01      0.02     92403
+          10       0.00      0.00      0.00        87
+          11       0.98      0.98      0.98    187589
 
-    accuracy                           0.90   6592397
-   macro avg       0.89      0.79      0.82   6592397
-weighted avg       0.90      0.90      0.89   6592397
-
-Results saved to C:\Users\Abbas\Desktop\ids-project\results\nigger\test_results\clean-IDS-2018-binaryclass.csv_1745263007_binary_LSTM.h5_on_clean-IDS-2018-binaryclass.csv.txt
+    accuracy                           0.89   6592397
+   macro avg       0.56      0.47      0.49   6592397
+weighted avg       0.84      0.89      0.86   6592397
