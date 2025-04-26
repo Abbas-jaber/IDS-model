@@ -1,0 +1,21 @@
+Model Evaluation Results
+==============================
+Model: 02-14-2018.csv_1743864950_categorical.h5
+Test Dataset: 02-15-2018.csv
+
+Accuracy: 0.9721
+Loss: 0.1276
+Precision: 0.9763
+Recall: 0.9721
+F1-Score: 0.9718
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.98      0.99    988050
+           1       0.64      0.89      0.75     41508
+           2       0.84      0.27      0.40     10990
+
+    accuracy                           0.97   1040548
+   macro avg       0.83      0.71      0.71   1040548
+weighted avg       0.98      0.97      0.97   1040548
