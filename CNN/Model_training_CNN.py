@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import pandas as pd
 import operator
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense
 from keras.models import Sequential, load_model
@@ -13,12 +14,13 @@ from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.utils import normalize
 from sklearn.utils import shuffle
+from sklearn.metrics import precision_score, recall_score, f1_score
 from tensorflow.keras.callbacks import TensorBoard
 from timeit import default_timer as timer
 import time
 
-dataPath = r"C:\Users\Administrator\Desktop\Abbas"
-resultPath = r"C:\Users\Administrator\Desktop\Abbas\results"
+dataPath =  r"C:\Users\Abbas\Desktop\ids-project"
+resultPath =  r"C:\Users\Abbas\Desktop\ids-project\results"
 if not os.path.exists(resultPath):
     print('result path {} created.'.format(resultPath))
     os.mkdir(resultPath)
@@ -48,6 +50,17 @@ cont_names = ['Timestamp', 'Flow Duration', 'Tot Fwd Pkts',
               'Init Fwd Win Byts', 'Init Bwd Win Byts', 'Fwd Act Data Pkts',
               'Fwd Seg Size Min', 'Active Mean', 'Active Std', 'Active Max',
               'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+
+def enable_memory_growth():
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    if gpus:
+        try:
+            # Enable memory growth for all GPUs
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
+            print("Memory growth enabled for all available GPUs")
+        except RuntimeError as e:
+            print(f"Memory growth configuration failed: {e}")
 
 def loadData(fileName):
     dataFile = os.path.join(dataPath, fileName)
@@ -109,11 +122,13 @@ def baseline_model(inputDim=-1, out_shape=(-1,)):
 
 def load_model_csv(_model_name):
     #Change to your own path
-    model = load_model('02-14-2018/02-14-2018.csv_adam_10_10_multiclass_baseline_model_1561248498.model'.format(_model_name))
+    model = load_model('results/models/02-14-2018/02-14-2018.csv_1743864950_categorical.h5'.format(_model_name))
     return model
 
 def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     
+    enable_memory_growth()
+
     #Creating data for analysis
     time_gen = int(time.time())
     global model_name
@@ -170,7 +185,7 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
         model.fit(x=X_train, y=y_train, epochs=epochs, batch_size=batch_size, verbose=2, callbacks=[tensorboard], validation_data=(X_test, y_test))
 
         #save model
-        model.save(f"{resultPath}/models/{model_name}.h5")
+        model.save(f"{resultPath}/models/{model_name}_CNN.h5")
 
         num+=1
 
@@ -181,11 +196,43 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     acc, loss = scores[1]*100, scores[0]*100
     print('Baseline: accuracy: {:.2f}%: loss: {:.2f}'.format(acc, loss))
 
+    #generate predictions and compute metrics
+    y_pred = model.predict(X_test)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true = np.argmax(y_test, axis=1)
+
+    #calculate metrics
+    precision = precision_score(y_true, y_pred_classes, average='weighted',zero_division=0) * 100
+    recall = recall_score(y_true, y_pred_classes, average='weighted', zero_division=0) * 100
+    f1 = f1_score(y_true, y_pred_classes, average='weighted',zero_division=0) * 100
+
+    print(f'Precision: {precision:.2f}%')
+    print(f'Recall: {recall:.2f}%')
+    print(f'F1-Score: {f1:.2f}%')
+
     resultFile = os.path.join(resultPath, dataFile)
     with open('{}.result'.format(resultFile), 'a') as fout:
         fout.write('{} results...'.format(model_name))
         fout.write('\taccuracy: {:.2f} loss: {:.2f}'.format(acc, loss))
         fout.write('\telapsed time: {:.2f} sec\n'.format(elapsed))
+
+        # Extract file name without extension for directory naming
+    file_name_without_ext = os.path.splitext(dataFile)[0]
+    
+    # Create results directory with input file name (without extension)
+    specific_result_path = os.path.join(resultPath, file_name_without_ext)
+    os.makedirs(specific_result_path, exist_ok=True)
+    
+    # Save results to text file
+    result_file_path = os.path.join(specific_result_path, f"{file_name_without_ext}_results.txt")
+    try:
+        with open(result_file_path, 'a') as fout:
+            fout.write(f'{model_name} results...\n')
+            fout.write(f'\taccuracy: {acc:.2f}% loss: {loss:.2f}\n')
+            fout.write(f'\telapsed time: {elapsed:.2f} sec\n')
+        print(f"Results saved to {result_file_path}")
+    except IOError as e:
+        print(f"Model Saved successfully")
         
 if __name__ == "__main__":
     if len(sys.argv) < 2:
