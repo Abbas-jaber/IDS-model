@@ -213,7 +213,7 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
         
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python(3) keras-tensorflow.py inputFile.csv (do not include full path to file)")
+        print("Usage: python(3) Model_training_ANN.py inputFile.csv (do not include full path to file)")
     else:
         experiment(sys.argv[1])
         
