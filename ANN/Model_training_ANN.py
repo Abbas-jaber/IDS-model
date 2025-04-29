@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import pandas as pd
 import operator
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Dense
 from keras.models import Sequential, load_model
@@ -12,6 +13,7 @@ from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.utils import normalize
+from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.utils import shuffle
 from tensorflow.keras.callbacks import TensorBoard
 from timeit import default_timer as timer
@@ -48,6 +50,17 @@ cont_names = ['Timestamp', 'Flow Duration', 'Tot Fwd Pkts',
               'Init Fwd Win Byts', 'Init Bwd Win Byts', 'Fwd Act Data Pkts',
               'Fwd Seg Size Min', 'Active Mean', 'Active Std', 'Active Max',
               'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+
+def enable_memory_growth():
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    if gpus:
+        try:
+            # Enable memory growth for all GPUs
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
+            print("Memory growth enabled for all available GPUs")
+        except RuntimeError as e:
+            print(f"Memory growth configuration failed: {e}")
 
 def loadData(fileName):
     dataFile = os.path.join(dataPath, fileName)
@@ -100,6 +113,8 @@ def load_model_csv(_model_name):
 
 def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     
+    enable_memory_growth()
+    
     #Creating data for analysis
     time_gen = int(time.time())
     global model_name
@@ -147,7 +162,7 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
         model.fit(x=X_train, y=y_train, epochs=epochs, batch_size=batch_size, verbose=2, callbacks=[tensorboard], validation_data=(X_test, y_test))
 
         #save model
-        model.save(f"{resultPath}/models/{model_name}.h5")
+        model.save(f"{resultPath}/models/{model_name}_ANN.h5")      
 
         num+=1
 
@@ -157,6 +172,20 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     print(model.metrics_names)
     acc, loss = scores[1]*100, scores[0]*100
     print('Baseline: accuracy: {:.2f}%: loss: {:.2f}'.format(acc, loss))
+
+    #generate predictions and compute metrics
+    y_pred = model.predict(X_test)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true = np.argmax(y_test, axis=1)
+
+    #calculate metrics
+    precision = precision_score(y_true, y_pred_classes, average='weighted') * 100
+    recall = recall_score(y_true, y_pred_classes, average='weighted') * 100
+    f1 = f1_score(y_true, y_pred_classes, average='weighted') * 100
+
+    print(f'Precision: {precision:.2f}%')
+    print(f'Recall: {recall:.2f}%')
+    print(f'F1-Score: {f1:.2f}%')
 
     resultFile = os.path.join(resultPath, dataFile)
     with open('{}.result'.format(resultFile), 'a') as fout:
