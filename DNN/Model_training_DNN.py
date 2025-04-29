@@ -13,6 +13,7 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.utils import normalize 
 from sklearn.utils import shuffle
 from tensorflow.keras.callbacks import TensorBoard
+from sklearn.metrics import precision_score, recall_score, f1_score
 from timeit import default_timer as timer
 import time
 
@@ -147,6 +148,20 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
     acc, loss = scores[1]*100, scores[0]*100
     print('Baseline: accuracy: {:.2f}%: loss: {:.2f}'.format(acc, loss))
 
+    #calculate aditional metrics
+    y_pred = model.predict(X_test)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true = np.argmax(y_test, axis=1)
+
+    precision = precision_score(y_true, y_pred_classes, average='weighted',zero_division=0) * 100
+    recall = recall_score(y_true, y_pred_classes, average='weighted', zero_division=0) * 100
+    f1 = f1_score(y_true, y_pred_classes, average='weighted',zero_division=0) * 100
+
+    print(f'Precision: {precision:.2f}%')
+    print(f'Recall: {recall:.2f}%')
+    print(f'F1-score: {f1:.2f}%')
+
+
     #Extract file name without extension for directory naming
     file_name_without_ext= os.path.splitext(dataFile)[0]
     #Create results directory with input file name
@@ -166,7 +181,7 @@ def experiment(dataFile, optimizer='adam', epochs=10, batch_size=10):
         
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python(3) keras-tensorflow.py inputFile.csv (do not include full path to file)")
+        print("Usage: python(3) Model_training_DNN.py inputFile.csv (do not include full path to file)")
     else:
         experiment(sys.argv[1])
         
