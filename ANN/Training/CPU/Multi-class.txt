@@ -1,1 +1,39 @@
-
+2025-05-01 00:59:27.077062: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2025-05-01 00:59:27.077381: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+optimizer: adam epochs: 10 batch_size: 10
+inputdim =  79
+2025-05-01 01:01:16.112163: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Categorical Cross-Entropy Loss Function
+Training .\multi-class\clean-IDS-2018-multiclass.csv on split 0
+Epoch 1/10
+527392/527392 - 670s - loss: 0.5767 - accuracy: 0.8139 - val_loss: 0.4738 - val_accuracy: 0.8342 - 670s/epoch - 1ms/step
+Epoch 2/10
+527392/527392 - 587s - loss: 0.4889 - accuracy: 0.8253 - val_loss: 0.4223 - val_accuracy: 0.8396 - 587s/epoch - 1ms/step
+Epoch 3/10
+527392/527392 - 596s - loss: 0.4705 - accuracy: 0.8266 - val_loss: 0.4235 - val_accuracy: 0.8320 - 596s/epoch - 1ms/step
+Epoch 4/10
+527392/527392 - 592s - loss: 0.4511 - accuracy: 0.8300 - val_loss: 0.4221 - val_accuracy: 0.8267 - 592s/epoch - 1ms/step
+Epoch 5/10
+527392/527392 - 595s - loss: 0.4427 - accuracy: 0.8316 - val_loss: 0.4259 - val_accuracy: 0.8277 - 595s/epoch - 1ms/step
+Epoch 6/10
+527392/527392 - 596s - loss: 0.4375 - accuracy: 0.8327 - val_loss: 0.4026 - val_accuracy: 0.8385 - 596s/epoch - 1ms/step
+Epoch 7/10
+527392/527392 - 605s - loss: 0.4333 - accuracy: 0.8332 - val_loss: 0.3935 - val_accuracy: 0.8742 - 605s/epoch - 1ms/step
+Epoch 8/10
+527392/527392 - 603s - loss: 0.4186 - accuracy: 0.8374 - val_loss: 0.4884 - val_accuracy: 0.8696 - 603s/epoch - 1ms/step
+Epoch 9/10
+527392/527392 - 606s - loss: 0.3900 - accuracy: 0.8493 - val_loss: 0.5566 - val_accuracy: 0.8612 - 606s/epoch - 1ms/step
+Epoch 10/10
+527392/527392 - 599s - loss: 0.3590 - accuracy: 0.8645 - val_loss: 0.4980 - val_accuracy: 0.8481 - 599s/epoch - 1ms/step
+41203/41203 [==============================] - 42s 1ms/step - loss: 0.4980 - accuracy: 0.8481
+['loss', 'accuracy']
+Baseline: accuracy: 84.81%: loss: 49.80
+41203/41203 [==============================] - 38s 923us/step
+C:\Users\Abbas\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\metrics\_classification.py:1471: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Precision: 80.70%
+Recall: 84.81%
+F1-Score: 79.99%
+Model Saved successfully
