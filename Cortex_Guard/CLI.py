@@ -7,6 +7,8 @@ import os
 CLEANING_SCRIPT_PATH = "clean.py"
 COMBINING_SCRIPT_PATH = "combining.py"
 CLEANING_SCRIPT_V2_PATH = "clean2.py"
+TRAINING_DNN_SCRIPT = "Model_training_DNN.py"
+TRAINING_LSTM_SCRIPT = "Model_training_LSTM.py"
 # Add paths for other scripts here later (e.g., training, evaluation)
 
 def call_script(script_path, *args):
@@ -44,7 +46,8 @@ def main():
         print("\nPlease choose the operation you want the framework to perform:")
         print("  [1] Clean Data")
         print("  [2] Combine Data")
-        print("  [3] Clean Data (Version 2 - Epoch Check)") 
+        print("  [3] Clean Data (Version 2 - Epoch Check)")
+        print("  [4] Train Detection Model")
         # Add more options here as you integrate other scripts
         print("  [q] Quit")
 
@@ -93,6 +96,23 @@ def main():
             else:
                 print("Invalid cleaning mode selected.")
             # --- End Argument Handling ---
+        elif choice == '4':
+            print("\nSelected: Model Training")
+            print("Available Architectures:")
+            print("  [1] Deep Neural Network (DNN)")
+            print("  [2] Long Short-Term Memory (LSTM)")
+            
+            model_choice = input("Select architecture: ").strip()
+            
+            if model_choice in ['1', '2']:
+                input_file = input("Training data filename (e.g., cleaned_data.csv): ")
+                if model_choice == '1':
+                    call_script(TRAINING_DNN_SCRIPT, input_file)
+                else:
+                    call_script(TRAINING_LSTM_SCRIPT, input_file)
+            else:
+                print("Invalid architecture selection")
+
         elif choice == 'q':
             print("\nExiting Cortex Guard. Goodbye!")
             break # Exit the while loop [3, 4]
