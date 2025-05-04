@@ -2,13 +2,16 @@ from subprocess import call
 import subprocess
 import sys
 import os
-# --- Configuration: Define paths to your scripts ---
+# --- Paths to scripts ---
 # Adjust these paths if the scripts are not in the same directory as this launcher script
 CLEANING_SCRIPT_PATH = "clean.py"
 COMBINING_SCRIPT_PATH = "combining.py"
 CLEANING_SCRIPT_V2_PATH = "clean2.py"
 TRAINING_DNN_SCRIPT = "Model_training_DNN.py"
 TRAINING_LSTM_SCRIPT = "Model_training_LSTM.py"
+CONFUSION_MATRIX_SCRIPT = "Confusion_Matrix.py"
+Evaluation_LSTM = "..\..\Evaluation_LSTM.py"
+Evaluation_DNN = "..\..\Evaluation_DNN.py"
 # Add paths for other scripts here later (e.g., training, evaluation)
 
 def call_script(script_path, *args):
@@ -48,7 +51,8 @@ def main():
         print("  [2] Combine Data")
         print("  [3] Clean Data (Version 2 - Epoch Check)")
         print("  [4] Train Detection Model")
-        # Add more options here as you integrate other scripts
+        print("  [5] Produce Confusion matrix")
+        print("  [6] Evaluate Model")
         print("  [q] Quit")
 
         choice = input("Enter your choice: ").strip().lower() # Get user input [7, 8, 9, 10]
@@ -110,6 +114,67 @@ def main():
                     call_script(TRAINING_DNN_SCRIPT, input_file)
                 else:
                     call_script(TRAINING_LSTM_SCRIPT, input_file)
+            else:
+                print("Invalid architecture selection")
+
+        elif choice == '5':
+            print("\nSelected: Confusion Matrix Generation")
+            print("Note: Requires stats file from previous training run")
+    
+            stats_file = input("Enter full path to stats file: ").strip()
+            output_file = input("Enter output filename (e.g., 'DNN_CM'): ").strip()
+    
+             # Validate accuracy input
+            while True:
+                accuracy_input = input("Enter model accuracy percentage (0-100): ").strip()
+                try:
+                  accuracy = float(accuracy_input)
+                  if 0 <= accuracy <= 100:
+                   break
+                  print("Error: Accuracy must be between 0 and 100")
+                except ValueError:
+                  print("Error: Please enter a valid number")
+
+                # Verify file existence
+            if not os.path.exists(stats_file):
+                print(f"Error: Stats file not found at {stats_file}")
+                continue
+
+                # Construct arguments list
+            args = [
+                   "--stats", stats_file,
+                   "--output", f"{output_file}.png",
+                   "--accuracy", str(accuracy)
+                ]
+    
+            call_script(CONFUSION_MATRIX_SCRIPT, *args)
+
+        elif choice == '6':
+            print("\nSelected: Model Evaluation")
+            print("Available Architectures:")
+            print("  [1] Deep Neural Network (DNN)")
+            print("  [2] Long Short-Term Memory (LSTM)")
+    
+            model_choice = input("Select architecture: ").strip()
+    
+            if model_choice in ['1', '2']:
+            # Get and validate model path
+                model_path = input("Enter full path to trained model (.h5): ").strip()
+                if not os.path.exists(model_path):
+                    print(f"Error: Model file not found at {model_path}")
+                    continue
+            
+            # Get and validate test data
+                test_data = input("Enter path to test data CSV: ").strip()
+                if not os.path.exists(test_data):
+                    print(f"Error: Test data not found at {test_data}")
+                    continue
+
+            # Execute evaluation
+                if model_choice == '1':
+                    call_script(Evaluation_DNN, model_path, test_data)
+                else:
+                    call_script(Evaluation_LSTM, model_path, test_data)
             else:
                 print("Invalid architecture selection")
 
