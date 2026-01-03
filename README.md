@@ -20,7 +20,7 @@ Cortex Guard addresses the critical limitations of traditional Signature-Based I
 - **AI-Powered Insights**: Integrated Ollama chatbot for system transparency
 - **Command-Line Framework**: User-friendly interface for model training and evaluation
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
