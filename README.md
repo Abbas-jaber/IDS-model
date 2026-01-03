@@ -63,7 +63,7 @@ Download the CSE-CIC-IDS2018 dataset:
 aws s3 sync s3://cse-cic-ids2018 ./datasets --no-sign-request --region ca-central-1
 ```
 
-## 📊 Usage
+##  Usage
 
 ### Launch Cortex Guard
 
@@ -258,4 +258,4 @@ Project Link: [https://github.com/Abbas-jaber/IDS-model](https://github.com/Abba
 
 ---
 
-⭐ **Star this repository if you find it helpful!**
+ **Star this repository if you find it helpful!**
