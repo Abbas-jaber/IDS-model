@@ -136,3 +136,7 @@ python Model_training_ANN.py binary-class/clean-IDS-2018-binaryclass.csv
 python Model_training_ANN.py multi-class/clean-IDS-2018-multiclass.csv
 
 ```
+
+### Confusion Matrix
+
+The folders DNN-CM and LSTM-CM will contain the confusion matrix of the DNN and LSTM models, as they gave the best results.
